@@ -23,7 +23,7 @@ public void draw()
 public int findFirstVowel(String sWord){
 	for (int i = 0; i < sWord.length(); i++){
 		char c = sWord.charAt(i);
-		if (c == 'a' || c == 'e' || c == 'e' || c == 'o' || c == 'u')
+		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
 			return i;
 	}
 	return -1;
@@ -33,7 +33,7 @@ public String pigLatin(String word){
 	//precondition: sWord is a valid String of length greater than 0
 	if (word.length() == 0) return "";
 	//postcondition: returns the pig latin equivalent of sWord
-	String sWord = word.toLowerCase();
+	String sWord = Character.toLowerCase(word.charAt(0)) + word.substring(1);
 	//Parse commas and periods
 	if (word.endsWith(".") || word.endsWith(",")){
 		sWord = word.substring(0, word.length()-1).toLowerCase();
@@ -55,7 +55,6 @@ public String pigLatin(String word){
 	else {
 		ret = sWord.substring(vowel) + sWord.substring(0, vowel) + "ay";
 	}
-	/*
 	//Put uppercase back
 	if (Character.isUpperCase(word.charAt(0))){
 		ret = Character.toUpperCase(ret.charAt(0)) + ret.substring(1);
@@ -64,6 +63,5 @@ public String pigLatin(String word){
 		if (word.endsWith(".") || word.endsWith(",")){
 			ret = ret + word.charAt(word.length()-1);
 		}
-	*/
-	return sWord + vowel;
+	return ret;
 }
